@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    # Procedemos a autenticarnos en Docker Hub
+    # Procedemos a autenticarnos en Docker Hub.
     - name: Docker Login
       env: 
         DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -27,11 +27,13 @@ jobs:
         echo "Iniciando login"
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "Fin del login"
-
-
         
-      
-
-
-    #- name: Build the Docker image
-      #run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    # Procedemos a construir la imagen.
+    - name: Build Docker Image
+      run: |
+        docker build -t gabrieldp/docker-graphql:0.0.2 .
+        
+    # Procedemos a realizar el push de la imagen.
+    - name: Push Docker Image
+      run: |
+        docker push gabrieldp/docker-graphql:0.0.2 .
