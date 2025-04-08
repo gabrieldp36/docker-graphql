@@ -36,4 +36,4 @@ jobs:
     # Procedemos a realizar el push de la imagen.
     - name: Push Docker Image
       run: |
-        docker push gabrieldp/docker-graphql:0.0.2 .
+        docker push gabrieldp/docker-graphql:0.0.2
